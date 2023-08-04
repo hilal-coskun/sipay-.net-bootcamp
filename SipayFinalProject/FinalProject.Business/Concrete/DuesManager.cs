@@ -1,4 +1,6 @@
 ﻿using FinalProject.Business.Abstract;
+using FinalProject.Business.Contants;
+using FinalProject.Core.Utilities.Results;
 using FinalProject.DataAcces.Concrete.EntityFramework;
 using FinalProject.Entities.Concrete;
 using System;
@@ -18,37 +20,40 @@ namespace FinalProject.Business.Concrete
 			_efDuesDal = efDuesDal;
 		}
 
-		public void Add(Dues dues)
+		public IResult Add(Dues dues)
 		{
 			_efDuesDal.Add(dues);
+			return new SuccessResult(Messages.DuesAdded);
 		}
 
-		public void Delete(Dues dues)
+		public IResult Delete(Dues dues)
 		{
 			_efDuesDal.Delete(dues);
+			return new SuccessResult(Messages.DuesDeleted);
 		}
 
-		public Dues GetById(int duesId)
+		public IDataResult<Dues> GetById(int duesId)
 		{
 			var dues = _efDuesDal.Get(p => p.Id == duesId);
-			return dues;
+			return new SuccessDataResult<Dues>(dues);
 		}
 
-		public List<Dues> GetList()
+		public IDataResult<List<Dues>> GetList()
 		{
 			var dueses = _efDuesDal.GetList().ToList();
-			return dueses;
+			return new SuccessDataResult<List<Dues>>(dueses);
 		}
 
-		public List<Dues> GetListByFlat(int flatId)
+		public IDataResult<List<Dues>> GetListByFlat(int flatId)
 		{
 			var flats = _efDuesDal.GetList(p => p.FlatId == flatId).ToList();
-			return flats;
+			return new SuccessDataResult<List<Dues>>(flats);
 		}
 
-		public void Update(Dues dues)
+		public IResult Update(Dues dues)
 		{
 			_efDuesDal.Update(dues);
+			return new SuccessResult(Messages.DuesUpdated);
 		}
 	}
 }

@@ -1,4 +1,6 @@
 ﻿using FinalProject.Business.Abstract;
+using FinalProject.Business.Contants;
+using FinalProject.Core.Utilities.Results;
 using FinalProject.DataAcces.Concrete.EntityFramework;
 using FinalProject.Entities.Concrete;
 using System;
@@ -18,37 +20,40 @@ namespace FinalProject.Business.Concrete
 			_efInvoiceDal = efInvoiceDal;
 		}
 
-		public void Add(Invoice invoice)
+		public IResult Add(Invoice invoice)
 		{
 			_efInvoiceDal.Add(invoice);
+			return new SuccessResult(Messages.FlatAdded);
 		}
 
-		public void Delete(Invoice invoice)
+		public IResult Delete(Invoice invoice)
 		{
 			_efInvoiceDal.Delete(invoice);
+			return new SuccessResult(Messages.FlatDeleted);
 		}
 
-		public Invoice GetById(int invoiceId)
+		public IDataResult<Invoice> GetById(int invoiceId)
 		{
 			var invoice = _efInvoiceDal.Get(p => p.Id == invoiceId);
-			return invoice;
+			return new SuccessDataResult<Invoice>(invoice);
 		}
 
-		public List<Invoice> GetList()
+		public IDataResult<List<Invoice>> GetList()
 		{
 			var invoices = _efInvoiceDal.GetList().ToList();
-			return invoices;
+			return new SuccessDataResult<List<Invoice>>(invoices);
 		}
 
-		public List<Invoice> GetListByFlat(int flatId)
+		public IDataResult<List<Invoice>> GetListByFlat(int flatId)
 		{
 			var flats = _efInvoiceDal.GetList(p => p.FlatId == flatId).ToList();
-			return flats;
+			return new SuccessDataResult<List<Invoice>>(flats);
 		}
 
-		public void Update(Invoice invoice)
+		public IResult Update(Invoice invoice)
 		{
 			_efInvoiceDal.Update(invoice);
+			return new SuccessResult(Messages.FlatUpdated);
 		}
 	}
 }

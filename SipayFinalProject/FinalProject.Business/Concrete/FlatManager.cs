@@ -1,4 +1,6 @@
 ﻿using FinalProject.Business.Abstract;
+using FinalProject.Business.Contants;
+using FinalProject.Core.Utilities.Results;
 using FinalProject.DataAcces.Concrete.EntityFramework;
 using FinalProject.Entities.Concrete;
 using System;
@@ -18,37 +20,40 @@ namespace FinalProject.Business.Concrete
 			_efFlatDal = efFlatDal;
 		}
 
-		public void Add(Flat flat)
+		public IResult Add(Flat flat)
 		{
 			_efFlatDal.Add(flat);
+			return new SuccessResult(Messages.UserAdded);
 		}
 
-		public void Delete(Flat flat)
+		public IResult Delete(Flat flat)
 		{
 			_efFlatDal.Delete(flat);
+			return new SuccessResult(Messages.UserAdded);
 		}
 
-		public Flat GetById(int flatId)
+		public IDataResult<Flat> GetById(int flatId)
 		{
 			var flat = _efFlatDal.Get(p => p.Id == flatId);
-			return flat;
+			return new SuccessDataResult<Flat>(flat);
 		}
 
-		public List<Flat> GetList()
+		public IDataResult<List<Flat>> GetList()
 		{
 			var flats = _efFlatDal.GetList().ToList();
-			return flats;
+			return new SuccessDataResult<List<Flat>>(flats);
 		}
 
-		public List<Flat> GetListByUser(int userId)
+		public IDataResult<List<Flat>> GetListByUser(int userId)
 		{
 			var flats = _efFlatDal.GetList(p => p.UserId == userId).ToList();
-			return flats;
+			return new SuccessDataResult<List<Flat>>(flats);
 		}
 
-		public void Update(Flat flat)
+		public IResult Update(Flat flat)
 		{
 			_efFlatDal.Update(flat);
+			return new SuccessResult(Messages.UserAdded);
 		}
 	}
 }
