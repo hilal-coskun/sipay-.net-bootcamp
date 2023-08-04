@@ -11,31 +11,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.DataAcces.Concrete.EntityFramework
 {
-	public class EfDuesDal : /*EfEntityRepositoryBase<Dues, DataContexts>,*/ IDuesDal
+	public class EfDuesDal : EfEntityRepositoryBase<Dues, DataContexts>, IDuesDal
 	{
-		public void Add(Dues entity)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Delete(Dues entity)
-		{
-			throw new NotImplementedException();
-		}
-
-		public Dues Get(Expression<Func<Dues, bool>> filter)
-		{
-			throw new NotImplementedException();
-		}
-
-		public IList<Dues> GetList(Expression<Func<Dues, bool>> filter = null)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Update(Dues entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

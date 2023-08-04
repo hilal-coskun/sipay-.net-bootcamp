@@ -11,31 +11,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject.DataAcces.Concrete.EntityFramework
 {
-	public class EfFlatDal : IFlatDal
+	public class EfFlatDal : EfEntityRepositoryBase<Flat, DataContexts>, IFlatDal
 	{
-		public void Add(Flat entity)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Delete(Flat entity)
-		{
-			throw new NotImplementedException();
-		}
-
-		public Flat Get(Expression<Func<Flat, bool>> filter)
-		{
-			throw new NotImplementedException();
-		}
-
-		public IList<Flat> GetList(Expression<Func<Flat, bool>> filter = null)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Update(Flat entity)
-		{
-			throw new NotImplementedException();
-		}
 	}
 }

@@ -11,31 +11,8 @@ using System.Threading.Tasks;
 
 namespace FinalProject.DataAcces.Concrete.EntityFramework
 {
-	public class EfInvoiceDal : /*EfEntityRepositoryBase<Invoice, DataContexts>,*/ IInvoiceDal
+	public class EfInvoiceDal : EfEntityRepositoryBase<Invoice, DataContexts>, IInvoiceDal
 	{
-		public void Add(Invoice entity)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Delete(Invoice entity)
-		{
-			throw new NotImplementedException();
-		}
-
-		public Invoice Get(Expression<Func<Invoice, bool>> filter)
-		{
-			throw new NotImplementedException();
-		}
-
-		public IList<Invoice> GetList(Expression<Func<Invoice, bool>> filter = null)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Update(Invoice entity)
-		{
-			throw new NotImplementedException();
-		}
+		
 	}
 }

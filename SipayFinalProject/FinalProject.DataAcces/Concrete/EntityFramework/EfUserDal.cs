@@ -11,31 +11,8 @@ using System.Threading.Tasks;
 
 namespace FinalProject.DataAcces.Concrete.EntityFramework
 {
-	public class EfUserDal : /*EfEntityRepositoryBase<User, DataContexts>,*/ IUserDal
+	public class EfUserDal : EfEntityRepositoryBase<User, DataContexts>, IUserDal
 	{
-		public void Add(User entity)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Delete(User entity)
-		{
-			throw new NotImplementedException();
-		}
-
-		public User Get(Expression<Func<User, bool>> filter)
-		{
-			throw new NotImplementedException();
-		}
-
-		public IList<User> GetList(Expression<Func<User, bool>> filter = null)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void Update(User entity)
-		{
-			throw new NotImplementedException();
-		}
+		
 	}
 }
