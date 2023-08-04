@@ -1,4 +1,5 @@
-﻿using FinalProject.Entities.Concrete;
+﻿using FinalProject.Core.Utilities.Results;
+using FinalProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace FinalProject.Business.Abstract
 {
 	public interface IDuesService
 	{
-		Dues GetById(int duesId);
-		List<Dues> GetList();
-		List<Dues> GetListByFlat(int flatId);
-		void Add(Dues dues);
-		void Update(Dues dues);
-		void Delete(Dues dues);
+		IDataResult<Dues> GetById(int duesId);
+		IDataResult<List<Dues>> GetList();
+		IDataResult<List<Dues>> GetListByFlat(int flatId);
+		IResult Add(Dues dues);
+		IResult Update(Dues dues);
+		IResult Delete(Dues dues);
 	}
 }
