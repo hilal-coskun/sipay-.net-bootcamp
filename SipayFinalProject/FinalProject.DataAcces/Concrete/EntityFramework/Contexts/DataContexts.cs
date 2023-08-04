@@ -12,9 +12,14 @@ namespace FinalProject.DataAccess.Concrete.EntityFramework.Contexts
 {
 	public class DataContexts : DbContext
 	{
-		public DataContexts(DbContextOptions<DataContexts> options) : base(options)
+		/*public DataContexts(DbContextOptions<DataContexts> options) : base(options)
 		{
 
+		}*/
+
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+		{
+			optionsBuilder.UseSqlServer(@"Server=(localdb)\MSSQLLocalDB;initial catalog=ProjectFinalDb;Trusted_Connection=True;");
 		}
 
 
