@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FinalProject.Core.Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,14 @@ namespace FinalProject.Business.Contants
 		public static string DuesAdded = "The dues has been successfully registered";
 		public static string DuesDeleted = "The dues was successfully deleted";
 		public static string DuesUpdated = "The dues has been successfully updated";
+
+		public static string UserNotFound = "User not found";
+		public static string PasswordError = "Password is incorrect";
+		public static string SuccessfulLogin = "Successfully logged in";
+		public static string UseAlreadyResult = "This user already exists";
+
+		public static string UserRegistered = "The user has been successfully registered";
+
+		public static string AccessTokenCreated = "Access Token has been successfully created";
 	}
 }

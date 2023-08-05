@@ -1,9 +1,9 @@
 ﻿using FinalProject.Business.Abstract;
 using FinalProject.Business.Contants;
+using FinalProject.Core.Entities.Concrete;
 using FinalProject.Core.Utilities.Results;
 using FinalProject.DataAcces.Concrete.EntityFramework;
 using FinalProject.DataAccess.Abstract;
-using FinalProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -39,6 +39,18 @@ namespace FinalProject.Business.Concrete
 		{
 			var user = _UserDal.Get(p => p.Id == userId);
 			return new SuccessDataResult<User>(user);
+		}
+
+		public User GetByMail(string email)
+		{
+			var emails = _UserDal.Get(p => p.Email == email);
+			return emails;
+		}
+
+		public List<OperationClaim> GetClaims(User user)
+		{
+			var users = _UserDal.GetClaims(user);
+			return users;
 		}
 
 		public IDataResult<List<User>> GetList()

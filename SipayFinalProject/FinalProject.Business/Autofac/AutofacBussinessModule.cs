@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using FinalProject.Business.Abstract;
 using FinalProject.Business.Concrete;
+using FinalProject.Core.Utilities.Security.Jwt;
 using FinalProject.DataAcces.Concrete.EntityFramework;
 using FinalProject.DataAccess.Abstract;
 using System;
@@ -26,6 +27,9 @@ namespace FinalProject.Business.Autofac
 
 			builder.RegisterType<FlatManager>().As<IFlatService>();
 			builder.RegisterType<EfFlatDal>().As<IFlatDal>();
+
+			builder.RegisterType<AuthManager>().As<IAuthService>();
+			builder.RegisterType<JwtHelper>().As<ITokenHelper>();
 
 		}
 	}

@@ -1,9 +1,9 @@
 ﻿using FinalProject.Business.Abstract;
 using FinalProject.Business.Contants;
+using FinalProject.Core.Entities.Concrete;
 using FinalProject.Core.Utilities.Results;
 using FinalProject.DataAcces.Concrete.EntityFramework;
 using FinalProject.DataAccess.Abstract;
-using FinalProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;

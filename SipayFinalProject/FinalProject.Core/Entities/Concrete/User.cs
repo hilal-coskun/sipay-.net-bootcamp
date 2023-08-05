@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalProject.Entities.Concrete
+namespace FinalProject.Core.Entities.Concrete
 {
 	[Table("Users")]
 	public class User : IEntity
@@ -20,8 +20,11 @@ namespace FinalProject.Entities.Concrete
 		public string Email { get; set; }
 		public string PhoneNumber { get; set; }
 		public string CarInfo { get; set; }
+        public bool Status { get; set; }
+        public byte[] PasswordSalt { get; set; }
+        public byte[] PasswordHash { get; set; }
 
         public int FlatId { get; set; }
-        public virtual ICollection<Flat> Flats { get; set; }
+        public virtual Flat Flat { get; set; }
 	}
 }

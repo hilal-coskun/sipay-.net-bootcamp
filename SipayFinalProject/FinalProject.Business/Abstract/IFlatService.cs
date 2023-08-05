@@ -1,5 +1,5 @@
-﻿using FinalProject.Core.Utilities.Results;
-using FinalProject.Entities.Concrete;
+﻿using FinalProject.Core.Entities.Concrete;
+using FinalProject.Core.Utilities.Results;
 using System;
 using System.Collections.Generic;
 using System.Linq;

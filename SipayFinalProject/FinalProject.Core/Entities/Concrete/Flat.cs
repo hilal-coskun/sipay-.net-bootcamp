@@ -1,4 +1,5 @@
 ﻿using FinalProject.Core.Entities;
+using FinalProject.Core.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -7,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FinalProject.Entities.Concrete
+namespace FinalProject.Core.Entities.Concrete
 {
 	[Table("Flat")]
 	public class Flat : IEntity
@@ -22,9 +23,12 @@ namespace FinalProject.Entities.Concrete
 		public int FlatNumber { get; set; }
 
 		public int UserId { get; set; }
-		public virtual ICollection<User> Users { get; set; }
+		public virtual User User { get; set; }
 
-		public ICollection<Dues> Dueses { get; set; }
-		public ICollection<Invoice> Invoices { get; set; }
+		public int DuesesId { get; set; }
+		public List<Dues> Dueses { get; set; }
+
+		public int InvoicesId { get; set; }
+		public List<Invoice> Invoices { get; set; }
 	}
 }

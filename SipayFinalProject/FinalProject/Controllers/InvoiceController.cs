@@ -1,5 +1,5 @@
 ﻿using FinalProject.Business.Abstract;
-using FinalProject.Entities.Concrete;
+using FinalProject.Core.Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
