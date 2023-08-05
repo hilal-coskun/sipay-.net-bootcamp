@@ -1,12 +1,12 @@
 ﻿using FinalProject.DataAccess.Concrete.EntityFramework.Config;
 using Microsoft.EntityFrameworkCore;
-using FinalProject.Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using FinalProject.Core.Entities.Concrete;
 
 namespace FinalProject.DataAccess.Concrete.EntityFramework.Contexts
 {
@@ -28,6 +28,8 @@ namespace FinalProject.DataAccess.Concrete.EntityFramework.Contexts
 		public DbSet<Flat> Flats { get; set; }
 		public DbSet<Dues> Dues { get; set; }
 		public DbSet<Invoice> Invoices { get; set; }
+		public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+		public DbSet<OperationClaim> OperationClaims { get; set; }
 
 
 
@@ -37,6 +39,11 @@ namespace FinalProject.DataAccess.Concrete.EntityFramework.Contexts
 			modelBuilder.ApplyConfiguration(new FlatConfiguration());
 			modelBuilder.ApplyConfiguration(new DuesConfiguration());
 			modelBuilder.ApplyConfiguration(new InvoiceConfiguration());
+
+			modelBuilder.Entity<User>()
+		   .HasOne(u => u.Flat)
+		   .WithOne(f => f.User)
+		   .HasForeignKey<Flat>(f => f.UserId);
 
 			base.OnModelCreating(modelBuilder);
 		}

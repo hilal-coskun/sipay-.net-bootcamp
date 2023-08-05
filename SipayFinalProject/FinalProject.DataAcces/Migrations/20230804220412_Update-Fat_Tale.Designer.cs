@@ -4,6 +4,7 @@ using FinalProject.DataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.DataAcces.Migrations
 {
     [DbContext(typeof(DataContexts))]
-    partial class DataContextsModelSnapshot : ModelSnapshot
+    [Migration("20230804220412_Update-Fat_Tale")]
+    partial class UpdateFat_Tale
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +25,7 @@ namespace FinalProject.DataAcces.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("FinalProject.Core.Entities.Concrete.Dues", b =>
+            modelBuilder.Entity("FinalProject.Entities.Concrete.Dues", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +50,7 @@ namespace FinalProject.DataAcces.Migrations
                     b.ToTable("Dues");
                 });
 
-            modelBuilder.Entity("FinalProject.Core.Entities.Concrete.Flat", b =>
+            modelBuilder.Entity("FinalProject.Entities.Concrete.Flat", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -89,7 +92,7 @@ namespace FinalProject.DataAcces.Migrations
                     b.ToTable("Flat");
                 });
 
-            modelBuilder.Entity("FinalProject.Core.Entities.Concrete.Invoice", b =>
+            modelBuilder.Entity("FinalProject.Entities.Concrete.Invoice", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -118,24 +121,7 @@ namespace FinalProject.DataAcces.Migrations
                     b.ToTable("Invoices");
                 });
 
-            modelBuilder.Entity("FinalProject.Core.Entities.Concrete.OperationClaim", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("OperationClaims");
-                });
-
-            modelBuilder.Entity("FinalProject.Core.Entities.Concrete.User", b =>
+            modelBuilder.Entity("FinalProject.Entities.Concrete.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -159,20 +145,9 @@ namespace FinalProject.DataAcces.Migrations
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<byte[]>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
-                    b.Property<byte[]>("PasswordSalt")
-                        .IsRequired()
-                        .HasColumnType("varbinary(max)");
-
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("Status")
-                        .HasColumnType("bit");
 
                     b.Property<string>("Surname")
                         .IsRequired()
@@ -188,30 +163,9 @@ namespace FinalProject.DataAcces.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("FinalProject.Core.Entities.Concrete.UserOperationClaim", b =>
+            modelBuilder.Entity("FinalProject.Entities.Concrete.Dues", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("OperationClaimId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("UserOperationClaims");
-                });
-
-            modelBuilder.Entity("FinalProject.Core.Entities.Concrete.Dues", b =>
-                {
-                    b.HasOne("FinalProject.Core.Entities.Concrete.Flat", "Flat")
+                    b.HasOne("FinalProject.Entities.Concrete.Flat", "Flat")
                         .WithMany("Dueses")
                         .HasForeignKey("FlatId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -220,20 +174,20 @@ namespace FinalProject.DataAcces.Migrations
                     b.Navigation("Flat");
                 });
 
-            modelBuilder.Entity("FinalProject.Core.Entities.Concrete.Flat", b =>
+            modelBuilder.Entity("FinalProject.Entities.Concrete.Flat", b =>
                 {
-                    b.HasOne("FinalProject.Core.Entities.Concrete.User", "User")
+                    b.HasOne("FinalProject.Entities.Concrete.User", "User")
                         .WithOne("Flat")
-                        .HasForeignKey("FinalProject.Core.Entities.Concrete.Flat", "UserId")
+                        .HasForeignKey("FinalProject.Entities.Concrete.Flat", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("FinalProject.Core.Entities.Concrete.Invoice", b =>
+            modelBuilder.Entity("FinalProject.Entities.Concrete.Invoice", b =>
                 {
-                    b.HasOne("FinalProject.Core.Entities.Concrete.Flat", "Flat")
+                    b.HasOne("FinalProject.Entities.Concrete.Flat", "Flat")
                         .WithMany("Invoices")
                         .HasForeignKey("FlatId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -242,25 +196,14 @@ namespace FinalProject.DataAcces.Migrations
                     b.Navigation("Flat");
                 });
 
-            modelBuilder.Entity("FinalProject.Core.Entities.Concrete.UserOperationClaim", b =>
-                {
-                    b.HasOne("FinalProject.Core.Entities.Concrete.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("FinalProject.Core.Entities.Concrete.Flat", b =>
+            modelBuilder.Entity("FinalProject.Entities.Concrete.Flat", b =>
                 {
                     b.Navigation("Dueses");
 
                     b.Navigation("Invoices");
                 });
 
-            modelBuilder.Entity("FinalProject.Core.Entities.Concrete.User", b =>
+            modelBuilder.Entity("FinalProject.Entities.Concrete.User", b =>
                 {
                     b.Navigation("Flat")
                         .IsRequired();
