@@ -9,6 +9,7 @@ using FinalProject.Entities.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using AccessToken = FinalProject.Core.Utilities.Security.Jwt.AccessToken;
@@ -20,11 +21,35 @@ namespace FinalProject.Business.Concrete
 
 		private IUserService _userService;
 		private ITokenHelper _tokenHelper;
+		private IUserOperationClaimsService _userOperationClaimsService;
 
-		public AuthManager(IUserService userService, ITokenHelper tokenHelper)
+		public AuthManager(IUserService userService, ITokenHelper tokenHelper, IUserOperationClaimsService userOperationClaimsService)
 		{
 			_userService = userService;
 			_tokenHelper = tokenHelper;
+			_userOperationClaimsService = userOperationClaimsService;
+		}
+
+		public IResult AssignmentRole(int userId, int operationClaimId)
+		{
+			var existingUser = _userService.GetById(userId);
+			if (existingUser == null)
+			{
+				return new ErrorResult(Messages.UserNotExist);
+			}
+
+			var existingRole = new List<UserOperationClaim>();
+
+			var newClaim = new UserOperationClaim
+			{
+				UserId = userId,
+				OperationClaimId = operationClaimId
+			};
+
+			existingRole.Add(newClaim);
+			_userOperationClaimsService.Add(newClaim);
+			return existingUser;
+
 		}
 
 		public IDataResult<AccessToken> CreateAccessToken(User user)

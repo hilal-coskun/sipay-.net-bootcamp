@@ -4,6 +4,7 @@ using FinalProject.DataAccess.Concrete.EntityFramework.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.DataAcces.Migrations
 {
     [DbContext(typeof(DataContexts))]
-    partial class DataContextsModelSnapshot : ModelSnapshot
+    [Migration("20230806121041_Added_SeedData")]
+    partial class Added_SeedData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -44,7 +47,7 @@ namespace FinalProject.DataAcces.Migrations
 
                     b.HasIndex("FlatId");
 
-                    b.ToTable("Dues", (string)null);
+                    b.ToTable("Dues");
                 });
 
             modelBuilder.Entity("FinalProject.Core.Entities.Concrete.Flat", b =>
@@ -80,7 +83,7 @@ namespace FinalProject.DataAcces.Migrations
                     b.HasIndex("OwnerId")
                         .IsUnique();
 
-                    b.ToTable("Flat", (string)null);
+                    b.ToTable("Flat");
                 });
 
             modelBuilder.Entity("FinalProject.Core.Entities.Concrete.Invoice", b =>
@@ -109,7 +112,7 @@ namespace FinalProject.DataAcces.Migrations
 
                     b.HasIndex("FlatId");
 
-                    b.ToTable("Invoices", (string)null);
+                    b.ToTable("Invoices");
                 });
 
             modelBuilder.Entity("FinalProject.Core.Entities.Concrete.OperationClaim", b =>
@@ -126,7 +129,7 @@ namespace FinalProject.DataAcces.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("OperationClaims", (string)null);
+                    b.ToTable("OperationClaims");
 
                     b.HasData(
                         new
@@ -191,7 +194,7 @@ namespace FinalProject.DataAcces.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("FinalProject.Core.Entities.Concrete.UserOperationClaim", b =>
@@ -212,7 +215,7 @@ namespace FinalProject.DataAcces.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("UserOperationClaims", (string)null);
+                    b.ToTable("UserOperationClaims");
                 });
 
             modelBuilder.Entity("FinalProject.Core.Entities.Concrete.Dues", b =>

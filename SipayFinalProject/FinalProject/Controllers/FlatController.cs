@@ -1,7 +1,9 @@
 ﻿using FinalProject.Business.Abstract;
 using FinalProject.Core.Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace FinalProject.Controllers
 {
@@ -18,6 +20,7 @@ namespace FinalProject.Controllers
 
 
 		[HttpGet("getAll")]
+		[Authorize(Roles = "admin")]
 		public IActionResult GetList()
 		{
 			var result = _flatService.GetList();
@@ -31,6 +34,7 @@ namespace FinalProject.Controllers
 
 
 		[HttpGet("getById")]
+		[Authorize(Roles = "admin")]
 		public IActionResult GetById(int id)
 		{
 			var result = _flatService.GetById(id);
@@ -42,6 +46,7 @@ namespace FinalProject.Controllers
 
 
 		[HttpPost("add")]
+		[Authorize(Roles = "admin")]
 		public IActionResult Add(Flat flat)
 		{
 			var result = _flatService.Add(flat);
@@ -52,6 +57,7 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpPost("update")]
+		[Authorize(Roles = "admin")]
 		public IActionResult Update(Flat flat)
 		{
 			var result = _flatService.Update(flat);
@@ -62,6 +68,7 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpPost("delete")]
+		[Authorize(Roles = "admin")]
 		public IActionResult Delete(Flat flat)
 		{
 			var result = _flatService.Delete(flat);

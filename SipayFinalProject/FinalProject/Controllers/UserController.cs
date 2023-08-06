@@ -1,5 +1,6 @@
 ﻿using FinalProject.Business.Abstract;
 using FinalProject.Core.Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,7 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpGet("getAll")]
+		//[Authorize(Roles ="admin")]
 		public IActionResult GetList()
 		{
 			var result = _userService.GetList();
@@ -28,6 +30,7 @@ namespace FinalProject.Controllers
 			return BadRequest(result.Message);
 		}
 
+		[Authorize(Roles = "admin")]
 		[HttpGet("getListByFlats")]
 		public IActionResult GetListByFlats(int flatId)
 		{
@@ -40,7 +43,7 @@ namespace FinalProject.Controllers
 			return BadRequest(result.Message);
 		}
 
-
+		[Authorize(Roles = "admin")]
 		[HttpGet("getById")]
 		public IActionResult GetById(int id)
 		{
@@ -51,7 +54,7 @@ namespace FinalProject.Controllers
 			return BadRequest(result.Message);
 		}
 
-
+		//[Authorize(Roles = "User.Add")]
 		[HttpPost("add")]
 		public IActionResult Add(User user)
 		{
@@ -62,6 +65,7 @@ namespace FinalProject.Controllers
 			return BadRequest(result.Message);
         }
 
+		[Authorize(Roles = "admin")]
 		[HttpPost("update")]
 		public IActionResult Update(User user)
 		{
@@ -72,6 +76,7 @@ namespace FinalProject.Controllers
 			return BadRequest(result.Message);
 		}
 
+		[Authorize(Roles = "admin")]
 		[HttpPost("delete")]
 		public IActionResult Delete(User user)
 		{

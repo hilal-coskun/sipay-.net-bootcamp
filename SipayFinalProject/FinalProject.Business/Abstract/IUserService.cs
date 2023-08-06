@@ -19,5 +19,7 @@ namespace FinalProject.Business.Abstract
 		List<OperationClaim> GetClaims(User user);
 		User GetByMail(string email);
 
+
+
 	}
 }

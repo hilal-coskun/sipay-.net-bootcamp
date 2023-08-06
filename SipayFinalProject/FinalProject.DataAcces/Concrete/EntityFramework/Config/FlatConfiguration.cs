@@ -15,11 +15,11 @@ namespace FinalProject.DataAccess.Concrete.EntityFramework.Config
 		{
 			builder.Property(x => x.Id).IsRequired(true).UseIdentityColumn();
 			builder.Property(x => x.IsFull).IsRequired(true);
-			builder.Property(x => x.BlokNo).IsRequired(true);
-			builder.Property(x => x.FlatNumber).IsRequired(true);
-			builder.Property(x => x.FloorNumber).IsRequired(true);
+			builder.Property(x => x.Block).IsRequired(true);
+			builder.Property(x => x.FlatNo).IsRequired(true);
+			builder.Property(x => x.FloorNo).IsRequired(true);
 
-			builder.HasIndex(x => x.UserId);
+			builder.HasIndex(x => x.OwnerId);
 
 		}
 	}

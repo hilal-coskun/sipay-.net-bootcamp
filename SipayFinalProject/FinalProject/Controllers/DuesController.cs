@@ -1,7 +1,9 @@
 ﻿using FinalProject.Business.Abstract;
 using FinalProject.Core.Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace FinalProject.Controllers
 {
@@ -17,6 +19,7 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpGet("getAll")]
+		//[Authorize(Roles = "admin")]
 		public IActionResult GetList()
 		{
 			var result = _duesService.GetList();
@@ -29,6 +32,7 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpGet("getListByFlats")]
+		//[Authorize(Roles = "admin,customer")]
 		public IActionResult GetListByFlats(int flatId)
 		{
 			var result = _duesService.GetListByFlat(flatId);
@@ -42,6 +46,7 @@ namespace FinalProject.Controllers
 
 
 		[HttpGet("getById")]
+		//[Authorize(Roles = "admin,customer")]
 		public IActionResult GetById(int id)
 		{
 			var result = _duesService.GetById(id);
@@ -53,6 +58,7 @@ namespace FinalProject.Controllers
 
 
 		[HttpPost("add")]
+		//[Authorize(Roles = "admin")]
 		public IActionResult Add(Dues dues)
 		{
 			var result = _duesService.Add(dues);
@@ -63,6 +69,7 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpPost("update")]
+		//[Authorize(Roles = "admin")]
 		public IActionResult Update(Dues dues)
 		{
 			var result = _duesService.Update(dues);
@@ -73,6 +80,7 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpPost("delete")]
+		//[Authorize(Roles = "admin")]
 		public IActionResult Delete(Dues dues)
 		{
 			var result = _duesService.Delete(dues);

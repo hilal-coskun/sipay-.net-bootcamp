@@ -65,8 +65,9 @@ if (app.Environment.IsDevelopment())
 app.UseCors(builder => builder.WithOrigins("https://localhost:7006").AllowAnyHeader());
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+
 app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 

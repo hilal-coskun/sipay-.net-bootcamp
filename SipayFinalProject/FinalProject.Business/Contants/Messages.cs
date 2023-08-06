@@ -33,5 +33,10 @@ namespace FinalProject.Business.Contants
 		public static string UserRegistered = "The user has been successfully registered";
 
 		public static string AccessTokenCreated = "Access Token has been successfully created";
+		public static string UserAlreadyAssignmentRole = "User already has the role.";
+		public static string UserNotExist = "User does not exist.";
+
+		public static string UserOperationClaimDeleted = "The flat has been successfully registered";
+		public static string UserOperationClaimAdded = "The flat was successfully deleted";
 	}
 }

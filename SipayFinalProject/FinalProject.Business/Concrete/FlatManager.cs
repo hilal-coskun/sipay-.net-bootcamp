@@ -47,7 +47,7 @@ namespace FinalProject.Business.Concrete
 
 		public IDataResult<List<Flat>> GetListByUser(int userId)
 		{
-			var flats = _flatDal.GetList(p => p.UserId == userId).ToList();
+			var flats = _flatDal.GetList(p => p.OwnerId == userId).ToList();
 			return new SuccessDataResult<List<Flat>>(flats);
 		}
 

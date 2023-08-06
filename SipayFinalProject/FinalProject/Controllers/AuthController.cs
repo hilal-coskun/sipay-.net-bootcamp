@@ -1,7 +1,10 @@
 ﻿using FinalProject.Business.Abstract;
+using FinalProject.Core.Utilities.Results;
 using FinalProject.Entities.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace FinalProject.Controllers
 {
@@ -35,6 +38,7 @@ namespace FinalProject.Controllers
 			return BadRequest(result.Message);
 		}
 
+
 		[HttpPost("register")]
 		public ActionResult Register(UserForRegisterDto userForRegisterDto)
 		{
@@ -52,7 +56,9 @@ namespace FinalProject.Controllers
 				return Ok(result.Data);
 			}
 
+
 			return BadRequest(result.Message);
 		}
+
 	}
 }

@@ -1,7 +1,9 @@
 ﻿using FinalProject.Business.Abstract;
 using FinalProject.Core.Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Data;
 
 namespace FinalProject.Controllers
 {
@@ -17,6 +19,7 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpGet("getAll")]
+		[Authorize(Roles = "admin")]
 		public IActionResult GetList()
 		{
 			var result = _invoiceService.GetList();
@@ -29,6 +32,7 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpGet("getListByFlats")]
+		[Authorize(Roles = "admin,customer")]
 		public IActionResult GetListByFlats(int flatId)
 		{
 			var result = _invoiceService.GetListByFlat(flatId);
@@ -42,6 +46,7 @@ namespace FinalProject.Controllers
 
 
 		[HttpGet("getById")]
+		[Authorize(Roles = "admin,customer")]
 		public IActionResult GetById(int id)
 		{
 			var result = _invoiceService.GetById(id);
@@ -53,6 +58,7 @@ namespace FinalProject.Controllers
 
 
 		[HttpPost("add")]
+		[Authorize(Roles = "admin")]
 		public IActionResult Add(Invoice ınvoice)
 		{
 			var result = _invoiceService.Add(ınvoice);
@@ -63,6 +69,7 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpPost("update")]
+		[Authorize(Roles = "admin")]
 		public IActionResult Update(Invoice ınvoice)
 		{
 			var result = _invoiceService.Update(ınvoice);
@@ -73,6 +80,7 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpPost("delete")]
+		[Authorize(Roles = "admin")]
 		public IActionResult Delete(Invoice ınvoice)
 		{
 			var result = _invoiceService.Delete(ınvoice);

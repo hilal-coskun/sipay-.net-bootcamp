@@ -16,19 +16,17 @@ namespace FinalProject.Core.Entities.Concrete
 
 		[Key]
 		public int Id { get; set; }
-		public string BlokNo { get; set; }
+		public string Block { get; set; }
 		public bool IsFull { get; set; }
 		public string Type { get; set; }
-		public int FloorNumber { get; set; }
-		public int FlatNumber { get; set; }
+		public int FloorNo { get; set; }
+		public int FlatNo { get; set; }
 
-		public int UserId { get; set; }
-		public virtual User User { get; set; }
+		public int OwnerId { get; set; }
+		public virtual User Owner { get; set; }
 
-		public int DuesesId { get; set; }
 		public List<Dues> Dueses { get; set; }
 
-		public int InvoicesId { get; set; }
 		public List<Invoice> Invoices { get; set; }
 	}
 }

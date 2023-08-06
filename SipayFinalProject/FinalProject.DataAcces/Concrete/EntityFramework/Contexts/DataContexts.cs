@@ -42,8 +42,15 @@ namespace FinalProject.DataAccess.Concrete.EntityFramework.Contexts
 
 			modelBuilder.Entity<User>()
 		   .HasOne(u => u.Flat)
-		   .WithOne(f => f.User)
-		   .HasForeignKey<Flat>(f => f.UserId);
+		   .WithOne(f => f.Owner)
+		   .HasForeignKey<Flat>(f => f.OwnerId);
+
+			modelBuilder.Entity<OperationClaim>()
+				.HasData(
+					new OperationClaim() { Id = 1, Name = "admin" },
+					new OperationClaim() { Id = 2, Name = "customer" }
+				);
+
 
 			base.OnModelCreating(modelBuilder);
 		}
