@@ -34,7 +34,7 @@ namespace FinalProject.Controllers
 
 
 		[HttpGet("getById")]
-		[Authorize(Roles = "admin")]
+		[Authorize(Roles = "admin,customer")]
 		public IActionResult GetById(int id)
 		{
 			var result = _flatService.GetById(id);

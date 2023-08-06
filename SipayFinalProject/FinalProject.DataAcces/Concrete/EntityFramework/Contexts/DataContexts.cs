@@ -12,10 +12,6 @@ namespace FinalProject.DataAccess.Concrete.EntityFramework.Contexts
 {
 	public class DataContexts : DbContext
 	{
-		/*public DataContexts(DbContextOptions<DataContexts> options) : base(options)
-		{
-
-		}*/
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{

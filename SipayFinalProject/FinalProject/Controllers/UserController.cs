@@ -18,7 +18,6 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpGet("getAll")]
-		//[Authorize(Roles ="admin")]
 		public IActionResult GetList()
 		{
 			var result = _userService.GetList();
@@ -54,7 +53,7 @@ namespace FinalProject.Controllers
 			return BadRequest(result.Message);
 		}
 
-		//[Authorize(Roles = "User.Add")]
+		[Authorize(Roles = "admin")]
 		[HttpPost("add")]
 		public IActionResult Add(User user)
 		{
