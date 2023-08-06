@@ -18,6 +18,7 @@ namespace FinalProject.Controllers
 		}
 
 		[HttpGet("getAll")]
+		[Authorize(Roles = "admin")]
 		public IActionResult GetList()
 		{
 			var result = _userService.GetList();
