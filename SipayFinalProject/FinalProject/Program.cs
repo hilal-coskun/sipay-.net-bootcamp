@@ -42,9 +42,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-/*builder.Services.AddDbContext<DataContexts>(opt =>
-	opt.UseSqlServer(builder.Configuration.GetConnectionString("MsSql"))
-);*/
 
 
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory())
